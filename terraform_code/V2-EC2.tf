@@ -1,25 +1,26 @@
 provider "aws" {
+  # Configuration options
   region = "us-east-1"
 }
 
-resource "aws_instance" "demo-server" {
-    ami = "ami-022e1a32d3f742bd8"
-    instance_type = "t2.micro"
-    key_name = "dpp"
-    security_groups = [ "demo-sg" ]
-}
+ resource "aws_instance" "demo-server" {
+  ami           = "ami-079db87dc4c10ac91"
+  instance_type = "t2.micro"
+  key_name       = "ddp"
+  security_groups = [ "demo-sg" ]
+ }
 
 resource "aws_security_group" "demo-sg" {
   name        = "demo-sg"
   description = "SSH Access"
-  
+
   ingress {
-    description      = "Shh access"
+    description      = "SSH Access"
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
-    }
+  }
 
   egress {
     from_port        = 0
@@ -30,7 +31,6 @@ resource "aws_security_group" "demo-sg" {
   }
 
   tags = {
-    Name = "ssh-prot"
-
+    Name = "ssh-port"
   }
 }
