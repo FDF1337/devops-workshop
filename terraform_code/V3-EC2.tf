@@ -77,7 +77,7 @@ resource "aws_security_group" "demo-sg" {
   vpc_id = aws_vpc.dpp-vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "aws_internet_gateway.dpp-igw.id"
+    gateway_id = aws_internet_gateway.dpp-igw.id
     }
   }
 
