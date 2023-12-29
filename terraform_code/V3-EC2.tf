@@ -9,13 +9,13 @@ provider "aws" {
   key_name       = "dpp"
   // security_groups = [ "demo-sg" ]
   vpc_security_group_ids = [ aws_security_group.demo-sg.id ]
-  subnet_id = aws_subnet.dpp-public-subnet-01
+  subnet_id = aws_subnet.dpp-public-subnet-01.id
  }
 
 resource "aws_security_group" "demo-sg" {
   name        = "demo-sg"
   description = "SSH Access"
-  vpc_id = aws_vpc.dpp-vpc
+  vpc_id = aws_vpc.dpp-vpc.id
 
   ingress {
     description      = "SSH Access"
